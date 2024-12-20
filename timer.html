@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Đồng Hồ Ngày Giờ</title>
+</head>
+<body style="font-family: Arial, sans-serif; text-align: center; padding: 50px;">
+  
+  <div id="clock" style="font-size: 48px; font-weight: bold; color: green; font-family: Arial;"></div>
+  <script>
+    function updateClock() {
+      const now = new Date();
+      // Lấy giờ, phút, giây
+      const timeString = now.toLocaleTimeString();
+      // Lấy ngày, tháng, năm
+      const dateString = now.toLocaleDateString();
+      // Hiển thị ngày giờ
+      document.getElementById('clock').innerText = dateString + ' - ' + timeString;
+    }
+    setInterval(updateClock, 1000); // Cập nhật mỗi giây
+    updateClock(); // Hiển thị ngay lập tức
+  </script>
+</body>
+</html>
