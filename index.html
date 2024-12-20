@@ -1,23 +1,43 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Đồng Hồ Ngày Giờ</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Đồng Hồ</title>
+  <style>
+    body {
+      margin: 0; /* Loại bỏ khoảng trống mặc định */
+      padding: 0; /* Loại bỏ khoảng cách bên trong */
+      overflow: hidden; /* Ẩn thanh trượt */
+      display: flex; /* Sử dụng flexbox để căn chỉnh */
+      justify-content: center; /* Căn giữa theo chiều ngang */
+      align-items: center; /* Căn giữa theo chiều dọc */
+      height: 100vh; /* Chiều cao 100% khung nhìn */
+      font-family: Arial, sans-serif; /* Font chữ */
+      color: blue; /* Màu chữ xanh */
+      background-color: #f0f0f0; /* Màu nền nhẹ */
+    }
+    .clock {
+      font-size: 3rem; /* Kích thước chữ */
+    }
+  </style>
 </head>
-<body style="font-family: Arial, sans-serif; text-align: center; padding: 20px;">
-  
-  <div id="clock" style="font-size: 20px; font-weight: bold; color: blue; font-family: Oleo script;"></div>
+<body>
+  <div class="clock" id="clock">Loading...</div>
   <script>
     function updateClock() {
       const now = new Date();
-      // Lấy giờ, phút, giây
-      const timeString = now.toLocaleTimeString();
-      // Lấy ngày, tháng, năm
-      const dateString = now.toLocaleDateString();
-      // Hiển thị ngày giờ
-      document.getElementById('clock').innerText = dateString + ' - ' + timeString;
+      const day = now.getDate().toString().padStart(2, '0');
+      const month = (now.getMonth() + 1).toString().padStart(2, '0'); // Tháng bắt đầu từ 0
+      const year = now.getFullYear();
+      const hours = now.getHours().toString().padStart(2, '0');
+      const minutes = now.getMinutes().toString().padStart(2, '0');
+      const seconds = now.getSeconds().toString().padStart(2, '0');
+      const timeString = `${day}/${month}/${year} ${hours}:${minutes}:${seconds}`;
+      document.getElementById('clock').textContent = timeString;
     }
     setInterval(updateClock, 1000); // Cập nhật mỗi giây
-    updateClock(); // Hiển thị ngay lập tức
+    updateClock(); // Gọi ngay để hiển thị thời gian ban đầu
   </script>
 </body>
 </html>
